@@ -9,9 +9,10 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;
+const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.trim() : '*';
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
+  origin: frontendUrl,
   methods: ['GET', 'POST'],
 }));
 
@@ -27,7 +28,7 @@ const httpServer = createServer(app);
 
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: process.env.FRONTEND_URL || '*',
+    origin: frontendUrl,
     methods: ['GET', 'POST'],
   },
   pingInterval: 10000,
