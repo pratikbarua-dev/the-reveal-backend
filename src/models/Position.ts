@@ -3,7 +3,7 @@
 // ============================================
 
 import mongoose, { Schema, type Document } from 'mongoose';
-import type { IPosition } from '@/types';
+import type { IPosition } from '../types';
 
 export interface PositionDocument extends Omit<IPosition, '_id'>, Document {}
 

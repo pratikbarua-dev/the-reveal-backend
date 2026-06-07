@@ -3,7 +3,7 @@
 // ============================================
 
 import mongoose, { Schema, type Document } from 'mongoose';
-import type { IUser } from '@/types';
+import type { IUser } from '../types';
 
 export interface UserDocument extends Omit<IUser, '_id'>, Document {}
 

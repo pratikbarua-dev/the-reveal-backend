@@ -3,7 +3,7 @@
 // ============================================
 
 import mongoose, { Schema, type Document } from 'mongoose';
-import type { IGameSession } from '@/types';
+import type { IGameSession } from '../types';
 
 export interface GameSessionDocument
   extends Omit<IGameSession, '_id'>,
