@@ -19,6 +19,10 @@ app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
 
+app.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 const httpServer = createServer(app);
 
 const io = new SocketServer(httpServer, {
