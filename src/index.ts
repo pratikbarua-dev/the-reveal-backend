@@ -9,11 +9,11 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 4000;
-const frontendUrl = process.env.FRONTEND_URL ? process.env.FRONTEND_URL.trim() : '*';
 
 app.use(cors({
-  origin: frontendUrl,
+  origin: true, // Dynamically reflect the request origin to avoid header invalid char errors
   methods: ['GET', 'POST'],
+  credentials: true,
 }));
 
 app.get('/health', (req, res) => {
@@ -28,8 +28,9 @@ const httpServer = createServer(app);
 
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: frontendUrl,
+    origin: true,
     methods: ['GET', 'POST'],
+    credentials: true,
   },
   pingInterval: 10000,
   pingTimeout: 5000,
